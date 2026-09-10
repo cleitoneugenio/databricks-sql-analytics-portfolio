@@ -64,3 +64,10 @@ Nenhum dado confidencial será publicado. Caso o case use informações inspirad
 ## Case em destaque
 
 Confira a análise completa do Olist: [atrasos de entrega e satisfação do cliente](docs/case-olist.md).
+
+## Documentação e reprodutibilidade
+
+- [Origem e organização dos dados](data/README.md)
+- [Dicionário de dados](docs/dicionario-de-dados.md)
+- [Notebook SQL da análise](notebooks/01_analise_olist.sql)
+- [Camada de visualização](dashboard/README.md)
