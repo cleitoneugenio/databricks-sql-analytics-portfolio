@@ -2,6 +2,23 @@
 
 Este dicionário cobre os campos empregados nas consultas do projeto. Os nomes seguem a organização utilizada no workspace Databricks.
 
+## `workspace.default.orders`
+
+| Campo | Tipo esperado | Descrição |
+| --- | --- | --- |
+| `order_id` | texto | Identificador único do pedido. |
+| `customer_id` | texto | Chave de relacionamento com a tabela de clientes. |
+| `order_status` | texto | Situação do pedido; o case considera apenas `delivered`. |
+| `order_delivered_customer_date` | data/hora | Data efetiva de entrega ao cliente. |
+| `order_estimated_delivery_date` | data/hora | Data prometida para a entrega. |
+
+## `workspace.default.customers`
+
+| Campo | Tipo esperado | Descrição |
+| --- | --- | --- |
+| `customer_id` | texto | Chave de relacionamento com a tabela de pedidos. |
+| `customer_state` | texto | UF do cliente. |
+
 ## `workspace.default.vw_atraso_entrega`
 
 | Campo | Tipo esperado | Descrição |
@@ -9,6 +26,13 @@ Este dicionário cobre os campos empregados nas consultas do projeto. Os nomes s
 | `order_id` | texto | Identificador único do pedido. |
 | `customer_state` | texto | UF do cliente associada ao pedido. |
 | `atrasado` | inteiro/booleano | Indicador de atraso: `0` para entrega no prazo e `1` para entrega atrasada. |
+
+## Campos derivados durante a análise
+
+| Campo | Regra | Descrição |
+| --- | --- | --- |
+| `dias_atraso` | `DATEDIFF(order_delivered_customer_date, order_estimated_delivery_date)` | Diferença, em dias, entre a entrega efetiva e a data prometida. |
+| `status_entrega` | `CASE WHEN dias_atraso > 0 THEN 'Atrasado' ELSE 'No prazo' END` | Rótulo legível para o resultado do cálculo de atraso. |
 
 ## `workspace.default.order_reviews`
 

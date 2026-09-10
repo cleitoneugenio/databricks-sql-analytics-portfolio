@@ -58,7 +58,7 @@ Dataset público → carga no Databricks → modelagem → SQL → KPIs → visu
 
 ## Como explorar o projeto
 
-- [Notebook SQL da análise](notebooks/01_analise_olist.sql)
+- [Notebook SQL com os sete passos da análise](notebooks/01_analise_olist.sql)
 - [Taxa de atraso por estado](sql/01_atrasos_por_estado.sql)
 - [Impacto do atraso nas avaliações](sql/02_impacto_do_atraso_nas_avaliacoes.sql)
 - [Dicionário de dados](docs/dicionario-de-dados.md)
