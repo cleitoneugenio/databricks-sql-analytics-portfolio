@@ -1,54 +1,72 @@
-# Databricks + SQL | Análise de Dados Operacionais
+# Olist | Atrasos de Entrega e Satisfação do Cliente
 
-> Projeto de portfólio que transforma dados operacionais em insights acionáveis para apoiar decisões de negócio.
+> Case de análise de dados operacionais com Databricks e SQL para investigar o efeito de atrasos logísticos na experiência do cliente.
 
-## Sobre o projeto
+## Visão do case
 
-Este repositório reúne um case prático de análise de dados com **Databricks** e **SQL**, estruturado para demonstrar uma jornada completa: do dado bruto à construção de indicadores e à apresentação em dashboard.
+Este projeto analisa dados públicos do e-commerce brasileiro da Olist para responder a uma pergunta simples e relevante para operações: **como atrasos de entrega afetam a satisfação do cliente e onde a operação deve priorizar melhorias?**
 
-A proposta nasce da mesma visão que orienta meu trabalho em operações: dado só tem valor quando ajuda alguém a decidir melhor, enxergar um gargalo ou agir no momento certo.
+O foco não é apenas descrever números. É transformar dados de pedidos e avaliações em sinais claros para priorização operacional.
 
-## Objetivo de negócio
+## Fonte dos dados
 
-- Onde estão os principais gargalos da operação?
-- Quais indicadores merecem acompanhamento diário, semanal e mensal?
-- Como a evolução dos KPIs pode orientar priorização e tomada de decisão?
-- Como organizar um fluxo reproduzível de ingestão, tratamento e análise?
+Os dados utilizados são públicos: [Brazilian E-Commerce Public Dataset by Olist, no Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
 
-## Stack
+Os arquivos brutos não são versionados aqui para manter o repositório leve. A [documentação dos dados](data/README.md) explica a origem, o escopo e como reproduzir a carga no Databricks.
 
-- **Databricks** — ambiente de processamento e notebooks
-- **SQL** — exploração, transformação e construção de métricas
-- **Delta Lake** — organização das camadas de dados
-- **Dashboard** — comunicação visual dos indicadores
+## Perguntas de negócio
 
-## Estrutura planejada
+1. Quais estados apresentam as maiores taxas de atraso, considerando uma base mínima de pedidos?
+2. Pedidos atrasados recebem avaliações piores?
+3. Que indicadores devem orientar a investigação de rotas, transportadoras e prazos prometidos?
+
+## Principais achados
+
+| Indicador | Resultado |
+| --- | --- |
+| Avaliação média — pedido no prazo | **4,29** |
+| Avaliação média — pedido atrasado | **2,57** |
+| Diferença observada | **-1,72 ponto** |
+| Estados com maiores taxas na amostra | AL (23,9%), MA (19,7%), PI (16,0%) e CE (15,3%) |
+
+O principal sinal do case é direto: pedidos atrasados tiveram avaliação média 1,72 ponto menor. Atraso de entrega não é somente um KPI logístico; ele está associado à percepção de qualidade pelo cliente.
+
+Veja a análise completa em [Case Olist — atrasos de entrega e satisfação](docs/case-olist.md).
+
+## Stack e fluxo de trabalho
+
+- **Databricks** para organização do ambiente analítico e execução das consultas;
+- **SQL** para agregação, análise e construção dos KPIs;
+- **Delta Lake** como camada de dados no ambiente Databricks;
+- **Página web** como camada pública de visualização do case.
+
+~~~text
+Dataset público → carga no Databricks → modelagem → SQL → KPIs → visualização
+~~~
+
+## Estrutura do repositório
 
 ~~~text
 .
-├── notebooks/        # Notebooks Databricks por etapa da análise
-├── sql/              # Queries SQL organizadas por tema
-├── data/
-│   ├── raw/          # Amostra de dados brutos ou instruções de obtenção
-│   └── processed/    # Dados tratados para análise
-├── dashboard/        # Imagens, exportações e definição dos indicadores
-├── docs/             # Dicionário de dados, arquitetura e decisões técnicas
-└── assets/           # Recursos visuais do projeto
+├── data/         # Origem dos dados e instruções de obtenção
+├── notebooks/    # Notebook SQL exportável do Databricks
+├── sql/          # Queries separadas por pergunta de negócio
+├── docs/         # Case e dicionário de dados
+├── dashboard/    # Documentação da camada de visualização pública
+└── assets/       # Recursos visuais futuros
 ~~~
 
-## Fluxo de dados
+## Como explorar o projeto
 
-~~~text
-Dados brutos → ingestão → tratamento → modelagem → consultas SQL → KPIs → dashboard
-~~~
+- [Notebook SQL da análise](notebooks/01_analise_olist.sql)
+- [Taxa de atraso por estado](sql/01_atrasos_por_estado.sql)
+- [Impacto do atraso nas avaliações](sql/02_impacto_do_atraso_nas_avaliacoes.sql)
+- [Dicionário de dados](docs/dicionario-de-dados.md)
+- [Orientação para a visualização pública](dashboard/README.md)
 
-## Indicadores em foco
+## Próximo passo visual
 
-A seleção final de KPIs será documentada conforme o dataset, com ênfase em métricas que apoiem decisões operacionais: volume, produtividade, desempenho, tendências e possíveis desvios.
-
-## Privacidade e reprodutibilidade
-
-Nenhum dado confidencial será publicado. Caso o case use informações inspiradas em cenários reais, o repositório utilizará dados anonimizados, sintéticos ou agregados. As instruções de execução e o dicionário de dados ficarão em `docs/`.
+A versão pública da análise será apresentada em uma página web com identidade visual própria. O dashboard criado no Databricks permanece como evidência técnica do processo; a página web será a vitrine executiva do case.
 
 ## Autor
 
@@ -60,14 +78,3 @@ Nenhum dado confidencial será publicado. Caso o case use informações inspirad
 ---
 
 *Dados que geram resultado.*
-
-## Case em destaque
-
-Confira a análise completa do Olist: [atrasos de entrega e satisfação do cliente](docs/case-olist.md).
-
-## Documentação e reprodutibilidade
-
-- [Origem e organização dos dados](data/README.md)
-- [Dicionário de dados](docs/dicionario-de-dados.md)
-- [Notebook SQL da análise](notebooks/01_analise_olist.sql)
-- [Camada de visualização](dashboard/README.md)
