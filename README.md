@@ -1,10 +1,10 @@
-# Olist | Atrasos de Entrega e Satisfação do Cliente
+# Olist | Diagnóstico Operacional de E-commerce
 
-> Case de análise de dados operacionais com Databricks e SQL para investigar o efeito de atrasos logísticos na experiência do cliente.
+> Case de análise de dados operacionais com Databricks e SQL sobre recompra, atrasos logísticos, frete e concentração de vendedores.
 
 ## Visão do case
 
-Este projeto analisa dados públicos do e-commerce brasileiro da Olist para responder a uma pergunta simples e relevante para operações: **como atrasos de entrega afetam a satisfação do cliente e onde a operação deve priorizar melhorias?**
+Este projeto analisa dados públicos do e-commerce brasileiro da Olist para responder a uma pergunta relevante para operações: **quais fricções reduzem a experiência do cliente e onde a operação deve priorizar melhorias?**
 
 O foco não é apenas descrever números. É transformar dados de pedidos e avaliações em sinais claros para priorização operacional.
 
@@ -18,7 +18,9 @@ Os arquivos brutos não são versionados aqui para manter o repositório leve. A
 
 1. Quais estados apresentam as maiores taxas de atraso, considerando uma base mínima de pedidos?
 2. Pedidos atrasados recebem avaliações piores?
-3. Que indicadores devem orientar a investigação de rotas, transportadoras e prazos prometidos?
+3. A satisfação explica a recompra dos clientes?
+4. Quanto o frete pesa em relação ao preço dos itens?
+5. Existe concentração relevante de valor vendido em poucos vendedores?
 
 ## Principais achados
 
@@ -28,10 +30,13 @@ Os arquivos brutos não são versionados aqui para manter o repositório leve. A
 | Avaliação média — pedido atrasado | **2,57** |
 | Diferença observada | **-1,72 ponto** |
 | Estados com maiores taxas na amostra | AL (23,9%), MA (19,7%), PI (16,0%) e CE (15,3%) |
+| Taxa de recompra | **3,12%** dos clientes únicos |
+| Frete médio | **16,6%** do preço do produto |
+| Concentração de vendedores | **67,5%** do valor vendido nos 10% maiores vendedores |
 
-O principal sinal do case é direto: pedidos atrasados tiveram avaliação média 1,72 ponto menor. Atraso de entrega não é somente um KPI logístico; ele está associado à percepção de qualidade pelo cliente.
+O diagnóstico mostra quatro frentes de atenção: atraso regional, fricção do frete, baixa recompra e concentração comercial. Pedidos atrasados tiveram avaliação média 1,72 ponto menor, mas a comparação entre clientes que recompraram e não recompraram indica que a nota, sozinha, não explica o retorno.
 
-Veja a análise completa em [Case Olist — atrasos de entrega e satisfação](docs/case-olist.md).
+Veja a análise de entregas em [Case Olist — atrasos de entrega e satisfação](docs/case-olist.md) e o [diagnóstico operacional completo](docs/diagnostico-operacional.md).
 
 ## Stack e fluxo de trabalho
 
@@ -61,6 +66,12 @@ Dataset público → carga no Databricks → modelagem → SQL → KPIs → visu
 - [Notebook SQL com os sete passos da análise](notebooks/01_analise_olist.sql)
 - [Taxa de atraso por estado](sql/01_atrasos_por_estado.sql)
 - [Impacto do atraso nas avaliações](sql/02_impacto_do_atraso_nas_avaliacoes.sql)
+- [Resumo geral de atraso](sql/07_resumo_atraso_entrega.sql)
+- [Recompra de clientes](sql/03_recompra_clientes.sql)
+- [Recompra versus avaliação](sql/04_recompra_por_avaliacao.sql)
+- [Frete versus preço](sql/05_frete_vs_preco.sql)
+- [Concentração de vendedores](sql/06_concentracao_vendedores.sql)
+- [Notebook do diagnóstico ampliado](notebooks/02_diagnostico_operacional_olist.sql)
 - [Dicionário de dados](docs/dicionario-de-dados.md)
 - [Orientação para a visualização pública](dashboard/README.md)
 

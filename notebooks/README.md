@@ -13,3 +13,5 @@ O arquivo [`01_analise_olist.sql`](01_analise_olist.sql) é um notebook SQL expo
 7. cruzamento com `order_reviews` para calcular a nota média por status de entrega.
 
 Antes da execução, carregue no `workspace.default` as tabelas `orders`, `customers` e `order_reviews`. Consulte o [dicionário de dados](../docs/dicionario-de-dados.md) para os campos requeridos.
+
+O notebook [`02_diagnostico_operacional_olist.sql`](02_diagnostico_operacional_olist.sql) amplia o case com consultas sobre recompra, frete e concentração de vendedores. Para executá-lo, a tabela `order_items` também deve estar disponível.
