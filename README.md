@@ -60,3 +60,7 @@ Nenhum dado confidencial será publicado. Caso o case use informações inspirad
 ---
 
 *Dados que geram resultado.*
+
+## Case em destaque
+
+Confira a análise completa do Olist: [atrasos de entrega e satisfação do cliente](docs/case-olist.md).
