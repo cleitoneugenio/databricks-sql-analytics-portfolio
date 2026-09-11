@@ -31,7 +31,7 @@ Essa comparação usa timestamps completos. A medida `dias_atraso` é apenas des
 
 ## Resultados
 
-Os resultados numéricos e a imagem do dashboard serão publicados em [Resultados validados](resultados.md) depois da execução das consultas atualizadas. Isso evita divergência entre o case, o README e a página web.
+Os resultados numéricos da execução estão em [Resultados validados](resultados.md). Para explorar a leitura executiva do case, acesse o [Diagnóstico Operacional Olist](https://cleiton-dados.vercel.app/diagnostico-olist). O dashboard do Databricks foi usado na validação do processo, mas não possui exportação versionada neste repositório.
 
 ## Recomendação operacional
 

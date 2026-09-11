@@ -2,6 +2,8 @@
 
 > Case de análise de dados operacionais com Databricks e SQL sobre recompra, atrasos logísticos, frete e concentração de vendedores.
 
+**Quer explorar a análise primeiro?** Acesse o [Diagnóstico Operacional Olist](https://cleiton-dados.vercel.app/diagnostico-olist), a versão pública e executiva deste case.
+
 ## Visão do case
 
 Este projeto analisa dados públicos do e-commerce brasileiro da Olist para responder a uma pergunta relevante para operações: **quais fricções reduzem a experiência do cliente e onde a operação deve priorizar melhorias?**
@@ -30,33 +32,35 @@ O recorte temporal do dataset compreende pedidos realizados entre **2016 e 2018*
 - peso do frete por item e sobre o valor total dos itens;
 - concentração do valor vendido entre vendedores.
 
-Os valores publicáveis ficam somente em [Resultados validados](docs/resultados.md), gerados pelas queries deste repositório. Veja também a análise de entregas em [Case Olist — atrasos de entrega e satisfação](docs/case-olist.md), o [diagnóstico operacional](docs/diagnostico-operacional.md) e a [página pública do diagnóstico](https://cleiton-dados.vercel.app/diagnostico-olist).
+Os valores publicados ficam em [Resultados validados](docs/resultados.md), gerados pelas queries deste repositório. A análise de entregas está detalhada no [Case Olist — atrasos de entrega e satisfação](docs/case-olist.md) e a metodologia ampliada, no [diagnóstico operacional](docs/diagnostico-operacional.md).
 
 ## Stack e fluxo de trabalho
 
 - **Databricks** para organização do ambiente analítico e execução das consultas;
 - **SQL** para agregação, análise e construção dos KPIs;
 - **Delta Lake** como camada de armazenamento, demonstrada no notebook de ingestão;
-- **Página web** como camada pública de visualização do case.
+- **Página web** como experiência pública de leitura e tomada de decisão.
 
 ~~~text
-Dataset público → carga no Databricks → modelagem → SQL → KPIs → visualização
+Dataset público → carga no Databricks → modelagem → SQL → KPIs → página pública
 ~~~
 
 ## Estrutura do repositório
 
 ~~~text
 .
-├── data/         # Origem dos dados e instruções de obtenção
-├── notebooks/    # Notebook SQL exportável do Databricks
+├── data/         # Origem dos dados e resultados agregados
+├── notebooks/    # Notebooks SQL para execução no Databricks
 ├── sql/          # Queries separadas por pergunta de negócio
-├── docs/         # Case e dicionário de dados
-├── dashboard/    # Documentação da camada de visualização pública
-└── assets/       # Recursos visuais futuros
+├── docs/         # Case, resultados e dicionário de dados
+├── dashboard/    # Contexto da visualização e do dashboard técnico
+└── assets/       # Recursos visuais validados, quando houver
 ~~~
 
 ## Como explorar o projeto
 
+- [Página pública do diagnóstico](https://cleiton-dados.vercel.app/diagnostico-olist)
+- [Resultados validados](docs/resultados.md)
 - [Notebook SQL com os sete passos da análise](notebooks/01_analise_olist.sql)
 - [Notebook de ingestão CSV → Delta](notebooks/00_ingestao_olist_delta.sql)
 - [Taxa de atraso por estado](sql/01_atrasos_por_estado.sql)
@@ -69,11 +73,7 @@ Dataset público → carga no Databricks → modelagem → SQL → KPIs → visu
 - [Concentração de vendedores](sql/06_concentracao_vendedores.sql)
 - [Notebook do diagnóstico ampliado](notebooks/02_diagnostico_operacional_olist.sql)
 - [Dicionário de dados](docs/dicionario-de-dados.md)
-- [Orientação para a visualização pública](dashboard/README.md)
-
-## Experiência visual publicada
-
-A versão pública da análise está disponível em [Diagnóstico Operacional Olist](https://cleiton-dados.vercel.app/diagnostico-olist), com identidade visual própria e KPIs rastreáveis até as queries deste repositório. O dashboard criado no Databricks permanece como evidência técnica do processo; a página web é a vitrine executiva do case.
+- [Visualização pública e dashboard técnico](dashboard/README.md)
 
 ## Autor
 

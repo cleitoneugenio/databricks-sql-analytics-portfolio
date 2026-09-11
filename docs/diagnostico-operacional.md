@@ -26,4 +26,4 @@ Um pedido é classificado como atrasado quando `order_delivered_customer_date > 
 
 ## Publicação dos resultados
 
-Depois de executar a carga e as queries, atualize somente [Resultados validados](resultados.md). A página web deve consumir o arquivo agregado `data/processed/kpis.json` definido ali, garantindo uma única fonte de verdade.
+Depois de executar a carga e as queries, atualize [Resultados validados](resultados.md) e o agregado `data/processed/kpis.json`. Antes de atualizar a página pública, reconcilie seus números com esses dois artefatos para preservar uma fonte verificável para o case.

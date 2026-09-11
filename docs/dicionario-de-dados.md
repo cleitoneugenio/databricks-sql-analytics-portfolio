@@ -42,7 +42,7 @@ Este dicionário cobre os campos empregados nas consultas do projeto. Os nomes s
 | Campo | Regra | Descrição |
 | --- | --- | --- |
 | `dias_atraso` | `DATEDIFF(order_delivered_customer_date, order_estimated_delivery_date)` | Diferença, em dias, entre a entrega efetiva e a data prometida. |
-| `status_entrega` | `CASE WHEN dias_atraso > 0 THEN 'Atrasado' ELSE 'No prazo' END` | Rótulo legível para o resultado do cálculo de atraso. |
+| `status_entrega` | `CASE WHEN order_delivered_customer_date > order_estimated_delivery_date THEN 'Atrasado' ELSE 'No prazo' END` | Rótulo legível baseado na regra oficial de atraso por timestamp completo. |
 
 ## `workspace.default.order_reviews`
 
