@@ -71,7 +71,7 @@ Dataset público → carga no Databricks → modelagem → SQL → KPIs → visu
 - [Dicionário de dados](docs/dicionario-de-dados.md)
 - [Orientação para a visualização pública](dashboard/README.md)
 
-## Próximo passo visual
+## Experiência visual publicada
 
 A versão pública da análise está disponível em [Diagnóstico Operacional Olist](https://cleiton-dados.vercel.app/diagnostico-olist), com identidade visual própria e KPIs rastreáveis até as queries deste repositório. O dashboard criado no Databricks permanece como evidência técnica do processo; a página web é a vitrine executiva do case.
 
