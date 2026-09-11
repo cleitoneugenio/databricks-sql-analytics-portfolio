@@ -2,6 +2,12 @@
 
 > Case de análise de dados operacionais com Databricks e SQL sobre recompra, atrasos logísticos, frete e concentração de vendedores.
 
+## Metodologia
+
+Dataset público modelado e versionado como tabelas **Delta Lake** dentro do **Databricks**: os nove CSVs da Olist são carregados via [`notebooks/00_ingestao_olist_delta.sql`](notebooks/00_ingestao_olist_delta.sql), e toda a modelagem, agregação e construção de KPI acontece em SQL, executado no Databricks SQL Warehouse — do dado bruto ao resultado publicado, sem etapa fora da plataforma.
+
+Databricks aqui não é só onde o dataset mora: é o ambiente analítico completo do case — ingestão, modelagem, execução das consultas e a fonte dos números publicados em [Resultados validados](docs/resultados.md).
+
 ## Visão do case
 
 Este projeto analisa dados públicos do e-commerce brasileiro da Olist para responder a uma pergunta relevante para operações: **quais fricções reduzem a experiência do cliente e onde a operação deve priorizar melhorias?**
