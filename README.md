@@ -30,7 +30,7 @@ O recorte temporal do dataset compreende pedidos realizados entre **2016 e 2018*
 - peso do frete por item e sobre o valor total dos itens;
 - concentração do valor vendido entre vendedores.
 
-Os valores publicáveis ficam somente em [Resultados validados](docs/resultados.md), gerados pelas queries deste repositório. Veja também a análise de entregas em [Case Olist — atrasos de entrega e satisfação](docs/case-olist.md) e o [diagnóstico operacional](docs/diagnostico-operacional.md).
+Os valores publicáveis ficam somente em [Resultados validados](docs/resultados.md), gerados pelas queries deste repositório. Veja também a análise de entregas em [Case Olist — atrasos de entrega e satisfação](docs/case-olist.md), o [diagnóstico operacional](docs/diagnostico-operacional.md) e a [página pública do diagnóstico](https://cleiton-dados.vercel.app/diagnostico-olist).
 
 ## Stack e fluxo de trabalho
 
