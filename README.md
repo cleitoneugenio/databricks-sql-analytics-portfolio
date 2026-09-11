@@ -12,7 +12,7 @@ O foco não é apenas descrever números. É transformar dados de pedidos e aval
 
 Os dados utilizados são públicos: [Brazilian E-Commerce Public Dataset by Olist, no Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
 
-Os arquivos brutos não são versionados aqui para manter o repositório leve. A [documentação dos dados](data/README.md) explica a origem, o escopo e como reproduzir a carga no Databricks.
+O recorte temporal do dataset compreende pedidos realizados entre **2016 e 2018**. Os arquivos brutos não são versionados aqui para manter o repositório leve. A [documentação dos dados](data/README.md) explica a origem, o escopo e como reproduzir a carga no Databricks.
 
 ## Perguntas de negócio
 
@@ -22,27 +22,21 @@ Os arquivos brutos não são versionados aqui para manter o repositório leve. A
 4. Quanto o frete pesa em relação ao preço dos itens?
 5. Existe concentração relevante de valor vendido em poucos vendedores?
 
-## Principais achados
+## Métricas exploradas
 
-| Indicador | Resultado |
-| --- | --- |
-| Avaliação média — pedido no prazo | **4,29** |
-| Avaliação média — pedido atrasado | **2,57** |
-| Diferença observada | **-1,72 ponto** |
-| Estados com maiores taxas na amostra | AL (23,9%), MA (19,7%), PI (16,0%) e CE (15,3%) |
-| Taxa de recompra | **3,12%** dos clientes únicos |
-| Frete médio | **16,6%** do preço do produto |
-| Concentração de vendedores | **67,5%** do valor vendido nos 10% maiores vendedores |
+- atraso de entrega por estado, usando uma regra única baseada em timestamps;
+- diferença de avaliações com tamanho de amostra e intervalo de confiança;
+- taxa de recompra por cliente único;
+- peso do frete por item e sobre o valor total dos itens;
+- concentração do valor vendido entre vendedores.
 
-O diagnóstico mostra quatro frentes de atenção: atraso regional, fricção do frete, baixa recompra e concentração comercial. Pedidos atrasados tiveram avaliação média 1,72 ponto menor, mas a comparação entre clientes que recompraram e não recompraram indica que a nota, sozinha, não explica o retorno.
-
-Veja a análise de entregas em [Case Olist — atrasos de entrega e satisfação](docs/case-olist.md) e o [diagnóstico operacional completo](docs/diagnostico-operacional.md).
+Os valores publicáveis ficam somente em [Resultados validados](docs/resultados.md), gerados pelas queries deste repositório. Veja também a análise de entregas em [Case Olist — atrasos de entrega e satisfação](docs/case-olist.md) e o [diagnóstico operacional](docs/diagnostico-operacional.md).
 
 ## Stack e fluxo de trabalho
 
 - **Databricks** para organização do ambiente analítico e execução das consultas;
 - **SQL** para agregação, análise e construção dos KPIs;
-- **Delta Lake** como camada de dados no ambiente Databricks;
+- **Delta Lake** como camada de armazenamento, demonstrada no notebook de ingestão;
 - **Página web** como camada pública de visualização do case.
 
 ~~~text
@@ -64,9 +58,11 @@ Dataset público → carga no Databricks → modelagem → SQL → KPIs → visu
 ## Como explorar o projeto
 
 - [Notebook SQL com os sete passos da análise](notebooks/01_analise_olist.sql)
+- [Notebook de ingestão CSV → Delta](notebooks/00_ingestao_olist_delta.sql)
 - [Taxa de atraso por estado](sql/01_atrasos_por_estado.sql)
 - [Impacto do atraso nas avaliações](sql/02_impacto_do_atraso_nas_avaliacoes.sql)
 - [Resumo geral de atraso](sql/07_resumo_atraso_entrega.sql)
+- [Evidência estatística do impacto do atraso](sql/08_impacto_atraso_estatistica.sql)
 - [Recompra de clientes](sql/03_recompra_clientes.sql)
 - [Recompra versus avaliação](sql/04_recompra_por_avaliacao.sql)
 - [Frete versus preço](sql/05_frete_vs_preco.sql)

@@ -13,8 +13,8 @@ LIMIT 20;
 
 -- COMMAND ----------
 
--- PASSO 2 | Calcular o atraso em dias
--- Valores positivos representam entregas após a data estimada.
+-- PASSO 2 | Calcular a diferença de calendário em dias
+-- dias_atraso é descritivo. A classificação oficial de atraso será feita por timestamp no passo 3.
 SELECT
   order_id,
   order_delivered_customer_date,
@@ -30,18 +30,20 @@ LIMIT 20;
 
 -- COMMAND ----------
 
--- PASSO 3 | Traduzir o atraso para uma categoria de negócio
--- A subquery cria dias_atraso; CASE transforma o valor numérico em texto legível.
+-- PASSO 3 | Traduzir a entrega para uma categoria de negócio
+-- O critério oficial compara timestamps completos: entrega após o prazo prometido é atraso.
 SELECT
   order_id,
   dias_atraso,
   CASE
-    WHEN dias_atraso > 0 THEN 'Atrasado'
+    WHEN order_delivered_customer_date > order_estimated_delivery_date THEN 'Atrasado'
     ELSE 'No prazo'
   END AS status_entrega
 FROM (
   SELECT
     order_id,
+    order_delivered_customer_date,
+    order_estimated_delivery_date,
     DATEDIFF(
       order_delivered_customer_date,
       order_estimated_delivery_date
@@ -55,7 +57,7 @@ LIMIT 20;
 -- COMMAND ----------
 
 -- PASSO 4 | Criar a base analítica de atraso e validar o volume por estado
--- A view reúne pedidos e clientes para disponibilizar a UF do cliente e o indicador binário.
+-- A view é a fonte oficial do indicador atrasado e usa a mesma comparação de timestamps do passo 3.
 CREATE OR REPLACE VIEW workspace.default.vw_atraso_entrega AS
 SELECT
   o.order_id,

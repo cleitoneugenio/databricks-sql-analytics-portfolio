@@ -3,15 +3,17 @@
 
 WITH entregas AS (
   SELECT
-    DATEDIFF(
-      order_delivered_customer_date,
-      order_estimated_delivery_date
-    ) AS dias_atraso
-  FROM workspace.default.orders
-  WHERE order_status = 'delivered'
-    AND order_delivered_customer_date IS NOT NULL
+    v.atrasado,
+    CASE
+      WHEN v.atrasado = 1 THEN
+        (UNIX_TIMESTAMP(o.order_delivered_customer_date)
+          - UNIX_TIMESTAMP(o.order_estimated_delivery_date)) / 86400.0
+    END AS atraso_em_dias
+  FROM workspace.default.vw_atraso_entrega v
+  JOIN workspace.default.orders o
+    ON v.order_id = o.order_id
 )
 SELECT
-  ROUND(AVG(CASE WHEN dias_atraso > 0 THEN 1 ELSE 0 END) * 100, 1) AS pct_pedidos_atrasados,
-  ROUND(AVG(CASE WHEN dias_atraso > 0 THEN dias_atraso END), 1) AS atraso_medio_dias
+  ROUND(AVG(atrasado) * 100, 1) AS pct_pedidos_atrasados,
+  ROUND(AVG(atraso_em_dias), 1) AS atraso_medio_dias
 FROM entregas;

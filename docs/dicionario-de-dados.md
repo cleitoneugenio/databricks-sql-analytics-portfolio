@@ -60,7 +60,8 @@ Este dicionário cobre os campos empregados nas consultas do projeto. Os nomes s
 | `pct_atraso` | `AVG(atrasado) * 100` | Compara o desempenho relativo entre estados. |
 | `nota_media` | `AVG(review_score)` | Mede a satisfação média por status de entrega. |
 | `pct_recompra` | `AVG(total_pedidos > 1) * 100` | Percentual de clientes únicos com mais de um pedido entregue. |
-| `pct_frete_medio_sobre_preco` | `AVG(freight_value / price) * 100` | Peso médio do frete em relação ao preço do item. |
+| `pct_frete_sobre_valor_total` | `SUM(freight_value) / SUM(price) * 100` | Peso do frete sobre o valor total dos itens. |
+| `pct_frete_medio_por_item` | `AVG(freight_value / price) * 100` | Média do peso do frete por item; é diferente da razão entre somas. |
 | `pct_valor_top_10pct_vendedores` | `SUM(valor_top_10pct) / SUM(valor_total) * 100` | Concentração do valor vendido nos 10% maiores vendedores. |
 
 > Para a análise estadual, são considerados somente estados com pelo menos 100 pedidos, reduzindo distorções de amostras pequenas.

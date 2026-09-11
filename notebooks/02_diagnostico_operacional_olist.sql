@@ -46,9 +46,10 @@ GROUP BY status_recompra;
 
 -- COMMAND ----------
 
--- 3. Peso do frete sobre o preço do produto.
+-- 3. Peso do frete: razão sobre o valor total e média das razões por item.
 SELECT
-  ROUND(AVG(freight_value / NULLIF(price, 0)) * 100, 1) AS pct_frete_medio_sobre_preco,
+  ROUND(SUM(freight_value) / NULLIF(SUM(price), 0) * 100, 1) AS pct_frete_sobre_valor_total,
+  ROUND(AVG(freight_value / NULLIF(price, 0)) * 100, 1) AS pct_frete_medio_por_item,
   ROUND(AVG(CASE WHEN freight_value > price * 0.5 THEN 1 ELSE 0 END) * 100, 1)
     AS pct_itens_frete_acima_de_50pct,
   ROUND(AVG(CASE WHEN freight_value > price THEN 1 ELSE 0 END) * 100, 1)
