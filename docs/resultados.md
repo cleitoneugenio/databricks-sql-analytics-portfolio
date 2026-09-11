@@ -2,9 +2,18 @@
 
 Este é o ponto único de publicação dos resultados numéricos do case. README, página web e materiais de apresentação devem consumir os valores gerados a partir das queries do repositório, e não números digitados manualmente.
 
-## Status atual
+## Execução registrada
 
-Pendente de execução após a unificação da regra de atraso por timestamp. Os números históricos presentes nos frames visuais devem ser tratados como referência de trabalho até que as consultas atualizadas sejam executadas no Databricks.
+Execução em **10/09/2026**, no Databricks SQL Warehouse, sobre `workspace.default.orders`.
+
+| Métrica | Valor |
+| --- | ---: |
+| Pedidos entregues analisados | 96.470 |
+| Pedidos atrasados | 7.826 |
+| Taxa de atraso | 8,11% |
+| Atraso médio dos pedidos atrasados | 9,55 dias |
+
+**Definição de atraso:** `order_delivered_customer_date > order_estimated_delivery_date`. A comparação usa data e hora completas. Os números históricos presentes nos frames são apenas referências visuais; os valores desta seção são a fonte publicada para esse recorte.
 
 ## Como gerar a versão publicável
 
@@ -18,15 +27,17 @@ Pendente de execução após a unificação da regra de atraso por timestamp. Os
 
 O arquivo `data/processed/kpis.json` deve ser gerado pelo processo acima. Não suba dados brutos; versionar apenas um resumo agregado, sem identificadores individuais.
 
-Exemplo de estrutura:
+Estrutura atual:
 
 ~~~json
 {
-  "generated_at": "YYYY-MM-DD",
+  "generated_at": "2026-09-10",
   "delay_definition": "order_delivered_customer_date > order_estimated_delivery_date",
   "metrics": {
-    "pct_pedidos_atrasados": null,
-    "atraso_medio_dias": null,
+    "pedidos_entregues": 96470,
+    "pedidos_atrasados": 7826,
+    "pct_pedidos_atrasados": 8.11,
+    "atraso_medio_dias": 9.55,
     "pct_recompra": null,
     "pct_frete_sobre_valor_total": null,
     "pct_valor_top_10pct_vendedores": null

@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-09-10",
+  "source": "Databricks SQL Warehouse / workspace.default.orders",
+  "delay_definition": "order_delivered_customer_date > order_estimated_delivery_date",
+  "metrics": {
+    "pedidos_entregues": 96470,
+    "pedidos_atrasados": 7826,
+    "pct_pedidos_atrasados": 8.11,
+    "atraso_medio_dias": 9.55,
+    "pct_recompra": null,
+    "pct_frete_sobre_valor_total": null,
+    "pct_valor_top_10pct_vendedores": null
+  }
+}

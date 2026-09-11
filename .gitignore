@@ -13,6 +13,7 @@
 data/raw/*
 data/processed/*
 !data/**/README.md
+!data/processed/kpis.json
 *.csv
 *.parquet
 *.jsonl
