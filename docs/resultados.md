@@ -12,6 +12,19 @@ Execução em **10/09/2026**, no Databricks SQL Warehouse, sobre `workspace.defa
 | Pedidos atrasados | 7.826 |
 | Taxa de atraso | 8,11% |
 | Atraso médio dos pedidos atrasados | 9,55 dias |
+| Clientes únicos analisados | 93.358 |
+| Clientes que recompraram | 2.801 |
+| Taxa de recompra | 3,00% |
+| Nota média — entrega no prazo | 4,29 |
+| Nota média — entrega atrasada | 2,57 |
+| Diferença de nota — atrasada versus no prazo | -1,72 ponto |
+| Frete sobre o valor total dos itens | 16,57% |
+| Peso médio do frete por item | 32,09% |
+| Itens com frete acima de 50% do preço | 16,81% |
+| Itens com frete acima do preço | 3,66% |
+| Vendedores analisados | 3.095 |
+| Valor dos itens nos 10% maiores vendedores | 67,56% |
+| Valor dos itens no 1% maior de vendedores | 26,07% |
 
 **Definição de atraso:** `order_delivered_customer_date > order_estimated_delivery_date`. A comparação usa data e hora completas. Os números históricos presentes nos frames são apenas referências visuais; os valores desta seção são a fonte publicada para esse recorte.
 
@@ -38,9 +51,12 @@ Estrutura atual:
     "pedidos_atrasados": 7826,
     "pct_pedidos_atrasados": 8.11,
     "atraso_medio_dias": 9.55,
-    "pct_recompra": null,
-    "pct_frete_sobre_valor_total": null,
-    "pct_valor_top_10pct_vendedores": null
+    "pct_recompra": 3.00,
+    "nota_media_no_prazo": 4.29,
+    "nota_media_atrasado": 2.57,
+    "pct_frete_sobre_valor_total": 16.57,
+    "pct_frete_medio_por_item": 32.09,
+    "pct_valor_top_10pct_vendedores": 67.56
   }
 }
 ~~~

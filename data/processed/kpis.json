@@ -7,8 +7,18 @@
     "pedidos_atrasados": 7826,
     "pct_pedidos_atrasados": 8.11,
     "atraso_medio_dias": 9.55,
-    "pct_recompra": null,
-    "pct_frete_sobre_valor_total": null,
-    "pct_valor_top_10pct_vendedores": null
+    "clientes_unicos": 93358,
+    "clientes_recompraram": 2801,
+    "pct_recompra": 3.00,
+    "nota_media_no_prazo": 4.29,
+    "nota_media_atrasado": 2.57,
+    "diferenca_nota_media_atrasado_vs_no_prazo": -1.72,
+    "pct_frete_sobre_valor_total": 16.57,
+    "pct_frete_medio_por_item": 32.09,
+    "pct_itens_frete_acima_de_50pct": 16.81,
+    "pct_itens_frete_acima_do_preco": 3.66,
+    "total_vendedores": 3095,
+    "pct_valor_top_10pct_vendedores": 67.56,
+    "pct_valor_top_1pct_vendedores": 26.07
   }
 }
