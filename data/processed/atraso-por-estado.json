@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-09-10",
+  "source": "Databricks SQL Warehouse / workspace.default.vw_atraso_entrega",
+  "delay_definition": "order_delivered_customer_date > order_estimated_delivery_date",
+  "minimum_orders": 100,
+  "states": [
+    { "uf": "AL", "total_pedidos": 397, "pedidos_atrasados": 95, "pct_atraso": 23.93 },
+    { "uf": "MA", "total_pedidos": 717, "pedidos_atrasados": 141, "pct_atraso": 19.67 },
+    { "uf": "PI", "total_pedidos": 476, "pedidos_atrasados": 76, "pct_atraso": 15.97 },
+    { "uf": "CE", "total_pedidos": 1279, "pedidos_atrasados": 196, "pct_atraso": 15.32 },
+    { "uf": "SE", "total_pedidos": 335, "pedidos_atrasados": 51, "pct_atraso": 15.22 },
+    { "uf": "BA", "total_pedidos": 3256, "pedidos_atrasados": 457, "pct_atraso": 14.04 },
+    { "uf": "RJ", "total_pedidos": 12350, "pedidos_atrasados": 1664, "pct_atraso": 13.47 },
+    { "uf": "TO", "total_pedidos": 274, "pedidos_atrasados": 35, "pct_atraso": 12.77 },
+    { "uf": "PA", "total_pedidos": 946, "pedidos_atrasados": 117, "pct_atraso": 12.37 },
+    { "uf": "ES", "total_pedidos": 1995, "pedidos_atrasados": 244, "pct_atraso": 12.23 },
+    { "uf": "MS", "total_pedidos": 701, "pedidos_atrasados": 81, "pct_atraso": 11.55 },
+    { "uf": "PB", "total_pedidos": 517, "pedidos_atrasados": 57, "pct_atraso": 11.03 },
+    { "uf": "PE", "total_pedidos": 1593, "pedidos_atrasados": 172, "pct_atraso": 10.80 },
+    { "uf": "RN", "total_pedidos": 474, "pedidos_atrasados": 51, "pct_atraso": 10.76 },
+    { "uf": "SC", "total_pedidos": 3546, "pedidos_atrasados": 346, "pct_atraso": 9.76 },
+    { "uf": "GO", "total_pedidos": 1957, "pedidos_atrasados": 160, "pct_atraso": 8.18 },
+    { "uf": "RS", "total_pedidos": 5344, "pedidos_atrasados": 382, "pct_atraso": 7.15 },
+    { "uf": "DF", "total_pedidos": 2080, "pedidos_atrasados": 147, "pct_atraso": 7.07 },
+    { "uf": "MT", "total_pedidos": 886, "pedidos_atrasados": 60, "pct_atraso": 6.77 },
+    { "uf": "SP", "total_pedidos": 40494, "pedidos_atrasados": 2387, "pct_atraso": 5.89 },
+    { "uf": "MG", "total_pedidos": 11354, "pedidos_atrasados": 637, "pct_atraso": 5.61 },
+    { "uf": "PR", "total_pedidos": 4923, "pedidos_atrasados": 246, "pct_atraso": 5.00 },
+    { "uf": "AM", "total_pedidos": 145, "pedidos_atrasados": 6, "pct_atraso": 4.14 },
+    { "uf": "RO", "total_pedidos": 243, "pedidos_atrasados": 7, "pct_atraso": 2.88 }
+  ]
+}

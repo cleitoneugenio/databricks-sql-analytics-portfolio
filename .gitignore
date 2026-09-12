@@ -14,6 +14,7 @@ data/raw/*
 data/processed/*
 !data/**/README.md
 !data/processed/kpis.json
+!data/processed/atraso-por-estado.json
 *.csv
 *.parquet
 *.jsonl
